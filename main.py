@@ -74,6 +74,7 @@ world_data = [
 
 
 def draw_cells():
+    win.fill(GRAY)
     for y, row in enumerate(world_data):
         for x, cell in enumerate(row):
             if cell == 1:
@@ -84,26 +85,22 @@ def draw_cells():
                 pg.draw.rect(win, GREEN, (x * SIDE, y * SIDE, SIDE, SIDE))
 
 
-def draw_entities():
-    pg.draw.rect(win, WHITE, (player1_pos[0] * SIDE, player1_pos[1] * SIDE, SIDE, SIDE))
-    pg.draw.rect(win, WHITE, (player2_pos[0] * SIDE, player2_pos[1] * SIDE, SIDE, SIDE))
+def draw_exits():
     pg.draw.rect(win, RED, (finish1_pos[0] * SIDE, finish1_pos[1] * SIDE, SIDE, SIDE))
     pg.draw.rect(win, GREEN, (finish1_pos[0] * SIDE, finish1_pos[1] * SIDE, SIDE, SIDE))
 
-
+def draw_players():
+    pg.draw.rect(win, WHITE, (player1_pos[0] * SIDE, player1_pos[1] * SIDE, SIDE, SIDE))
+    pg.draw.rect(win, WHITE, (player2_pos[0] * SIDE, player2_pos[1] * SIDE, SIDE, SIDE))
 
 def move_player(player_pos, direction):
+    draw_cells()
+    draw_exits()
     new_pos = (player_pos[0] + direction[0], player_pos[1] + direction[1])
     if world_data[new_pos[1]][new_pos[0]] == 0:
         return new_pos
     else:
         return player_pos
-
-
-
-
-
-
 
 # def gen_cells():
 #     for col in range(max_w):
@@ -118,10 +115,12 @@ def move_player(player_pos, direction):
 #         x += tile_width + margin
 
 def main():
+    global player1_pos, player2_pos
     draw_cells()
-    draw_entities()
+    draw_exits()
     running = True
     while running:
+        draw_players()
         for e in pg.event.get():
             if e.type == pg.QUIT:  # check for exit
                 running = False
@@ -166,8 +165,8 @@ def main():
         #     winner = "Player 2 wins!"
         #     running = False
 
-        pg.display.update()
-            
+        pg.display.update() 
+        clock.tick(15)
 
     pg.quit()
 
