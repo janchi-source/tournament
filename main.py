@@ -94,8 +94,6 @@ def draw_players():
     pg.draw.rect(win, WHITE, (player2_pos[0] * SIDE, player2_pos[1] * SIDE, SIDE, SIDE))
 
 def move_player(player_pos, direction):
-    draw_cells()
-    draw_exits()
     new_pos = (player_pos[0] + direction[0], player_pos[1] + direction[1])
     if world_data[new_pos[1]][new_pos[0]] == 0:
         return new_pos
@@ -115,11 +113,11 @@ def move_player(player_pos, direction):
 #         x += tile_width + margin
 
 def main():
-    global player1_pos, player2_pos
-    draw_cells()
-    draw_exits()
+    global player1_pos, player2_pos    
     running = True
     while running:
+        draw_cells()
+        draw_exits()
         draw_players()
         for e in pg.event.get():
             if e.type == pg.QUIT:  # check for exit
