@@ -90,8 +90,8 @@ def draw_exits():
     pg.draw.rect(win, GREEN, (finish1_pos[0] * SIDE, finish1_pos[1] * SIDE, SIDE, SIDE))
 
 def draw_players():
-    pg.draw.rect(win, WHITE, (player1_pos[0] * SIDE, player1_pos[1] * SIDE, SIDE, SIDE))
-    pg.draw.rect(win, WHITE, (player2_pos[0] * SIDE, player2_pos[1] * SIDE, SIDE, SIDE))
+    pg.draw.rect(win, RED, (player1_pos[0] * SIDE, player1_pos[1] * SIDE, SIDE, SIDE))
+    pg.draw.rect(win, GREEN, (player2_pos[0] * SIDE, player2_pos[1] * SIDE, SIDE, SIDE))
 
 def move_player(player_pos, direction):
     new_pos = (player_pos[0] + direction[0], player_pos[1] + direction[1])
