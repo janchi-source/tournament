@@ -1,5 +1,4 @@
 import pygame as pg
-import tilesmanger
 
 # setting up numbers
 pg.init()
@@ -12,8 +11,10 @@ tile_width = SIDE
 tile_heigth = SIDE
 margin = 0
 cells = []
+screen = 512
 
-win = pg.display.set_mode((768,768))
+
+win = pg.display.set_mode((screen, screen))
 max_w = (pg.display.get_surface().get_width() - margin) // (tile_width+margin)
 max_h = (pg.display.get_surface().get_height() - margin) // (tile_heigth+margin)
 win.fill(GRAY)
